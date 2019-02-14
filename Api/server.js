@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
 
-const db = require('../Config/dbConfig');
+const configureRoutes = require('../Config/Routes/LoginRoutes')
 
 const server = express();
 
@@ -14,7 +14,7 @@ server.use(
     helmet()
 );
 
-
+configureRoutes(server);
 
 
 module.exports = server;
