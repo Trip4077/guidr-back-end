@@ -8,8 +8,8 @@ const { authenticate } = require('../../Authentication/authenticate');
 const jwtKey = process.env.JWT_KEY || 'Need to add JWT_KEY to your .env File';
 
 module.exports = server =>{
-    server.post('/user/registration', register);
-    server.post('/user/login', login);
+    server.post('/users/registration', register);
+    server.post('/users/login', login);
 }
 
 createToken = (user) =>{
