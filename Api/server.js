@@ -16,6 +16,13 @@ server.use(
 
 configureRoutes(server);
 
+server.get('/', (req, res) => {
+    res
+      .status(200)
+      .json({
+          api: "Welcome to the Guidr server"
+      })
+})
 
 module.exports = server;
 
