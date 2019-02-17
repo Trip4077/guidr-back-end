@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js",
     "test": "cross-env TESTING_DB=testing jest --watch --verbose"
   },
@@ -10,7 +11,6 @@
   "author": "Chris Roth <c.roth.lambda@gmail.com>",
   "license": "MIT",
   "dependencies": {
-
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
@@ -22,6 +22,7 @@
     "jsonwebtoken": "^8.4.0",
     "knex": "^0.16.3",
     "morgan": "^1.9.1",
+    "pg": "^7.8.0",
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
