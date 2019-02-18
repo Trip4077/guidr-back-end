@@ -1,3 +1,4 @@
+require('dotenv').config();
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const aws = require('aws-sdk');
@@ -16,7 +17,7 @@ const upload = multer({
         bucket: 'guidrimages',
         acl: 'bucket-owner-full-control',
         metadata:  (req, file, cb)=>{
-            cb(null, {fieldName: file.fieldname});
+            cb(null, {fieldName: 'profileImage'});
         },
         key: (req, file, cb)=>{
             cb(null, Date.now().toString())
