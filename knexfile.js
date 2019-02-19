@@ -8,16 +8,6 @@ const localPg = {
 
 const dbConnection = process.env.DATABASE_URL || localPg;
 
-require('dotenv').config();
-const localPg = {
-  host: 'localhost',
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-};
-
-const dbConnection = process.env.DATABASE_URL || localPg;
-
 module.exports = {
 
   development: {
