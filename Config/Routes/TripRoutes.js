@@ -3,13 +3,13 @@ const db = require('../dbConfig');
 const Joi = require('joi');
 const validation = require('../../Helpers/joi-validations');
 
-module.exports={
-server.get('/trips/:id', getAllById)
+module.exports = server =>{
+server.get('/trips/:id', getAllById);
 }
-newTrip = (req, res) =>{
-    const trip = req.body;
-    const tripValidation = Joi.validate(trip, validation.)
-}
+// newTrip = (req, res) =>{
+//     const trip = req.body;
+//     const tripValidation = Joi.validate(trip, validation.)
+// }
 
 
 getAllById = (req, res) =>{
