@@ -3,7 +3,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('morgan');
 
-const configureRoutes = require('../Config/Routes/LoginRoutes')
+const configureLoginRoutes = require('../Config/Routes/LoginRoutes');
+const configureUserRoutes = require('../Config/Routes/UserRoutes');
 
 const server = express();
 
@@ -14,7 +15,8 @@ server.use(
     helmet()
 );
 
-configureRoutes(server);
+configureLoginRoutes(server);
+configureUserRoutes(server);
 
 server.get('/', (req, res) => {
     res
