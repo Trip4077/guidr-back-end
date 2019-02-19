@@ -59,4 +59,4 @@ typings/
 
 # next.js build output
 .next
-data/guidr.sqlite3
+guidr.sqlite3
