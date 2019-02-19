@@ -7,6 +7,7 @@ module.exports = server =>{
 server.post('/trips', newTrip)
 server.get('/trips/:username', getAllByUser);
 server.get('/trips', getAllTrips);
+server.post('/trips/:id', updateTrip)
 }
 
 newTrip = (req, res) =>{
@@ -39,5 +40,15 @@ getAllTrips = (req, res) =>{
     res.json(users);
   }).catch(err=>{
     res.status(500).json({message: 'internal server error'})
+  })
+}
+
+updateTrip = (req, res) =>{
+  const { id } = req.params; 
+  const trip = req.body;
+  db('trips').where('id', id).update(trip).then(number=>{
+    res.status(202).json(number);
+  }).catch(err=>{
+    res.status(500).send('internal server error')
   })
 }
