@@ -4,19 +4,40 @@ const Joi = require('joi');
 const validation = require('../../Helpers/joi-validations');
 
 module.exports = server =>{
-server.get('/trips/:id', getAllById);
+server.post('/trips', newTrip)
+server.get('/trips/:username', getAllByUser);
+server.get('/trips', getAllTrips);
 }
-// newTrip = (req, res) =>{
-//     const trip = req.body;
-//     const tripValidation = Joi.validate(trip, validation.)
-// }
+
+newTrip = (req, res) =>{
+    const trip = req.body;
+    const validateTripObject = Joi.validate(trip, validation.tripInput);
+
+    if(validateTripObject.error){
+      res.status(406).json(validateTripObject.error);
+    }else{
+      db('trips').insert(trip).then(id=>{
+        res.status(201).json({message: "trip added"})
+      }).catch(err=>{
+        res.status(500).send(err);
+      })
+    }
+}
 
 
-getAllById = (req, res) =>{
-    const { id } = req.params;
-    db('trips').where('user_id', id).then(row=>{
-      res.json(rows);  
+getAllByUser = (req, res) =>{
+    const { username } = req.params;
+    db('trips').where('username', username).then(row=>{
+      res.json(row);  
     }).catch(err =>{
         res.status(500).send(err)
     })
+}
+
+getAllTrips = (req, res) =>{
+  db('trips').then(users=>{
+    res.json(users);
+  }).catch(err=>{
+    res.status(500).json({message: 'internal server error'})
+  })
 }

@@ -11,8 +11,8 @@ exports.up = function(knex, Promise) {
       tbl.string('date');
       tbl.string('image');
       // for stretch
-      tbl.float('longitude').defaultTo(null);
-      tbl.float('latitude').defaultTo(null);
+      // tbl.float('longitude').defaultTo(null);
+      // tbl.float('latitude').defaultTo(null);
 
 })
 };
