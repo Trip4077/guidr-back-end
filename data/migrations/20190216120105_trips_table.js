@@ -2,14 +2,17 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('trips', tbl=>{
       tbl.increments();
-      tbl.integer('user_id').unsigned()
-      tbl.foreign('user_id').references('id').on('users');
+      tbl.string('username').notNullable();
       tbl.string('title').notNullable();
-      tbl.string('tag');
+      tbl.string('description').notNullable();
+      tbl.string('type').notNullable();
       tbl.boolean('private').defaultTo(false)
-      tbl.float('duration').notNullable();
+      tbl.string('duration').notNullable();
       tbl.string('date');
       tbl.string('image');
+      // for stretch
+      tbl.float('longitude').defaultTo(null);
+      tbl.float('latitude').defaultTo(null);
 
 })
 };
