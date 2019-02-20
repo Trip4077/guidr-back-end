@@ -41,7 +41,7 @@ editUser = (req, res) => {
     const {
         id
     } = req.params;
-    const userValidation = 
+    //add validation
     db('users').where('id', id).update(user).then(number => {
         res.json(number)
     }).catch(err =>{
@@ -52,7 +52,13 @@ editUser = (req, res) => {
 deleteUser=(req, res)=>{
     const { id } = req.params;
     db('users').where('id', id).del().then(number =>{
-        res.json(number)
+        if(number){
+            res.json(number)
+        }else{
+            res.status(404).json({message: 'User not found' })
+        }
+    }).catch(err=>{
+        res.status(500).send("internal server error")
     })
 }
 

@@ -5,7 +5,7 @@ const logger = require('morgan');
 
 const configureLoginRoutes = require('../Config/Routes/LoginRoutes');
 const configureUserRoutes = require('../Config/Routes/UserRoutes');
-
+const configureTripsRoutes = require('../Config/Routes/TripRoutes')
 const server = express();
 
 server.use(
@@ -17,6 +17,7 @@ server.use(
 
 configureLoginRoutes(server);
 configureUserRoutes(server);
+configureTripsRoutes(server);
 
 server.get('/', (req, res) => {
     res

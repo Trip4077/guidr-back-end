@@ -6,6 +6,10 @@ exports.up = function(knex, Promise) {
       tbl.string('username').notNullable().unique();
       tbl.string('password').notNullable();
       tbl.string('profileImage');
+      tbl.integer('age');
+      tbl.string('title');
+      tbl.string('tagline');
+
   })
 };
 

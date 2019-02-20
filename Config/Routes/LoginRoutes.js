@@ -53,7 +53,7 @@ login = (req, res)=>{
     db('users').where('username', credentials.username).first().then(user=>{
         if(user && bcrypt.compareSync(credentials.password, user.password)){
             const token = createToken(user);
-            res.json({token, message: 'Theeeeee keeeeeeeeeeey'})
+            res.json({token, message: 'Theeeeee keeeeeeeeeeey', user})
         }else{
             res.status(402).json({
                 message: "Get Bent! (you have no token)"

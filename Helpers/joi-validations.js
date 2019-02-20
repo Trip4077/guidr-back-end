@@ -7,11 +7,12 @@ module.exports={
         name: Joi.string().required()
     },
     tripInput:{
-        user_id: Joi.number().integer().required(),
+        username: Joi.string().required(),
         title: Joi.string().required(),
-        tag: Joi.string(),
+        description: Joi.string().required(),
+        type: Joi.string(),
         private: Joi.boolean().required(),
-        duration: Joi.number().required(),
+        duration: Joi.string().required(),
         date: Joi.string(),
         image: Joi.string()
 
