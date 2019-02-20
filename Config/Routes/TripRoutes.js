@@ -7,7 +7,8 @@ module.exports = server =>{
 server.post('/trips', newTrip)
 server.get('/trips/:username', getAllByUser);
 server.get('/trips', getAllTrips);
-server.post('/trips/:id', updateTrip)
+server.post('/trips/:id', updateTrip);
+server.delete('/trips/:id', deleteTrip);
 }
 
 newTrip = (req, res) =>{
@@ -50,5 +51,17 @@ updateTrip = (req, res) =>{
     res.status(202).json(number);
   }).catch(err=>{
     res.status(500).send('internal server error')
+  })
+}
+deleteTrip = (req, res) =>{
+  const { id } = req.params;
+  db('trips').where('id', id).del().then(number=>{
+    if(number){
+        res.json(number);
+    }else{
+      res.status(404).json({message: 'Trip not found'});
+    }
+  }).catch(err=>{
+    res.status(500).send(err)
   })
 }
