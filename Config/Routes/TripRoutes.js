@@ -2,13 +2,14 @@ const bcrypt = require('bcryptjs');
 const db = require('../dbConfig');
 const Joi = require('joi');
 const validation = require('../../Helpers/joi-validations');
+const { authenticate } = require('../../Helpers/authentication');
 
 module.exports = server =>{
-server.post('/trips', newTrip)
-server.get('/trips/:username', getAllByUser);
+server.post('/trips', authenticate, newTrip)
+server.get('/trips/:username', authenticate, getAllByUser);
 server.get('/trips', getAllTrips);
-server.post('/trips/:id', updateTrip);
-server.delete('/trips/:id', deleteTrip);
+server.post('/trips/:id', authenticate,  updateTrip);
+server.delete('/trips/:id', authenticate, deleteTrip);
 }
 
 newTrip = (req, res) =>{
