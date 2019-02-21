@@ -3,16 +3,17 @@ const db = require('../dbConfig');
 const Joi = require('joi');
 const validation = require('../../Helpers/joi-validations');
 const upload = require('../../Helpers/file-uploader');
+const { authenticate } = require('../../Helpers/authentication');
 
 const singleUpload = upload.single('image');
 
 module.exports = server => {
-    server.get('/users', allUsers);
-    server.get('/users/:id', userById);
-    server.put('/users/:id', editUser);
-    server.delete('/users/:id', deleteUser);
+    server.get('/users', authenticate, allUsers);
+    server.get('/users/:id', authenticate, userById);
+    server.put('/users/:id', authenticate, editUser);
+    server.delete('/users/:id', authenticate, deleteUser);
     //for cloud storage stretch
-    server.post('/users/:id/image-upload', addImage);
+    server.post('/users/:id/image-upload', authenticate, addImage);
 }
 
 allUsers = (req, res) => {
