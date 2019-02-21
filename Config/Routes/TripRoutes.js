@@ -8,7 +8,7 @@ module.exports = server =>{
 server.post('/trips', authenticate, newTrip)
 server.get('/trips/:username', authenticate, getAllByUser);
 server.get('/trips', getAllTrips);
-server.post('/trips/:id', authenticate,  updateTrip);
+server.put('/trips/:id', authenticate,  updateTrip);
 server.delete('/trips/:id', authenticate, deleteTrip);
 }
 
