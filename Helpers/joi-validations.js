@@ -4,7 +4,12 @@ module.exports={
     userInput:{
         username: Joi.string().required(),
         password: Joi.string().min(6).required(),
-        name: Joi.string().required()
+        name: Joi.string().required(),
+        profileImage: Joi.string(),
+        age: Joi.integer(),
+        title: Joi.string(),
+        tagline: Joi.string()
+
     },
     tripInput:{
         username: Joi.string().required(),
