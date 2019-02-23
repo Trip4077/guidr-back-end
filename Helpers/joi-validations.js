@@ -6,7 +6,6 @@ module.exports={
         password: Joi.string().min(6).required(),
         name: Joi.string().required(),
         profileImage: Joi.string(),
-        age: Joi.number.integer(),
         title: Joi.string(),
         tagline: Joi.string()
 
